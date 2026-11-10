@@ -1,0 +1,465 @@
+/* =========================================================
+   Apartmány Vir · styly
+   Barvy: krémová a bílá plocha, navy jen jako akcent,
+   tyrkysová/azurová pro moře, žlutá a červená na detaily.
+   ========================================================= */
+
+/* ---------- Písmo (uložené na webu, bez Google Fonts) ---------- */
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/montserrat-latin-ext-400-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/montserrat-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:500;font-display:swap;src:url(../fonts/montserrat-latin-ext-500-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:500;font-display:swap;src:url(../fonts/montserrat-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:600;font-display:swap;src:url(../fonts/montserrat-latin-ext-600-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:600;font-display:swap;src:url(../fonts/montserrat-latin-600-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:700;font-display:swap;src:url(../fonts/montserrat-latin-ext-700-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:700;font-display:swap;src:url(../fonts/montserrat-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{
+  --krem:#fbf8f2;
+  --bila:#ffffff;
+  --pisek:#f3ece0;
+  --navy:#0f2a3d;
+  --navy-70:rgba(15,42,61,.7);
+  --text:#24384a;
+  --text-svetly:#5b6d7c;
+  --tyrkys:#138a91;
+  --azur:#1fa3c4;
+  --azur-svetla:#e3f4f8;
+  --slunce:#f2b84b;
+  --cervena:#d9483b;
+  --volno:#3aa65a;
+  --obsazeno:#d9483b;
+  --linka:#e6dfd2;
+  --radius:14px;
+  --stin:0 10px 30px rgba(15,42,61,.08);
+  --max:1180px;
+  --font:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font);font-size:17px;line-height:1.65;color:var(--text);background:var(--krem);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+figure{margin:0}
+a{color:var(--tyrkys)}
+a:hover{color:var(--navy)}
+h1,h2,h3,h4{color:var(--navy);line-height:1.18;margin:0 0 .5em;font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(1.8rem,3.4vw,2.7rem)}
+h3{font-size:1.25rem}
+p{margin:0 0 1em}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-999px;top:8px;background:var(--navy);color:#fff;padding:8px 14px;border-radius:8px;z-index:200}
+.skip:focus{left:8px}
+:focus-visible{outline:3px solid var(--slunce);outline-offset:3px}
+
+.stitek{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--tyrkys);margin-bottom:.9rem}
+.stitek::before{content:"";display:inline-block;width:26px;height:2px;background:var(--slunce);vertical-align:middle;margin-right:10px}
+.uvod{font-size:1.08rem;color:var(--text-svetly);max-width:640px}
+.sekce{padding:110px 0}
+.sekce--bila{background:var(--bila)}
+.sekce--pisek{background:var(--pisek)}
+.sekce-hlava{max-width:720px;margin-bottom:48px}
+.sekce-hlava--stred{margin-left:auto;margin-right:auto;text-align:center}
+.sekce-hlava--stred .uvod{margin:0 auto}
+
+/* ---------- Tlačítka ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:inherit;font-weight:600;font-size:.95rem;padding:14px 26px;border-radius:999px;border:2px solid transparent;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,color .2s,border-color .2s;line-height:1.2}
+.btn:hover{transform:translateY(-2px)}
+.btn--azur{background:var(--azur);color:#fff}
+.btn--azur:hover{background:var(--tyrkys);color:#fff}
+.btn--obrys{border-color:var(--navy);color:var(--navy);background:transparent}
+.btn--obrys:hover{background:var(--navy);color:#fff}
+.btn--bila{background:#fff;color:var(--navy)}
+.btn--bila:hover{background:var(--slunce);color:var(--navy)}
+.btn--maly{padding:10px 18px;font-size:.85rem}
+.btn svg{width:18px;height:18px}
+
+/* ---------- Ikony ---------- */
+.ikona{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* ---------- Hlavička ---------- */
+.hlavicka{position:fixed;inset:0 0 auto 0;z-index:100;transition:background .35s,box-shadow .35s,color .35s;color:#fff}
+.hlavicka .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;max-width:1320px}
+.logo{display:flex;flex-direction:column;text-decoration:none;color:inherit;line-height:1.1}
+.logo b{font-size:1.15rem;letter-spacing:.02em}
+.logo small{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;opacity:.8}
+.menu{display:flex;align-items:center;gap:28px}
+.menu a{color:inherit;text-decoration:none;font-weight:500;font-size:.92rem}
+.menu a:hover{color:var(--slunce)}
+.menu .btn{color:#fff}
+.menu .btn:hover{color:#fff}
+.jazyk{display:flex;gap:4px;font-size:.8rem;font-weight:600}
+.jazyk span,.jazyk a{padding:4px 7px;border-radius:6px;border:1px solid currentColor;opacity:.85}
+.jazyk .aktivni{background:currentColor}
+.jazyk .aktivni em{font-style:normal;color:var(--navy)}
+.hlavicka.je-plna,.hlavicka.je-svetla{background:rgba(251,248,242,.96);color:var(--navy);box-shadow:0 2px 20px rgba(15,42,61,.08);backdrop-filter:blur(8px)}
+.hlavicka.je-plna .jazyk .aktivni em,.hlavicka.je-svetla .jazyk .aktivni em{color:#fff}
+.burger{display:none;background:none;border:0;color:inherit;cursor:pointer;padding:8px}
+.burger svg{width:28px;height:28px;stroke:currentColor}
+
+/* =========================================================
+   PROHLÍDKA · „video“ řízené scrollováním
+   ========================================================= */
+.prohlidka{position:relative;height:620vh;background:#0b1a26}
+.prohlidka__scena{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.prohlidka__snimek{position:absolute;inset:0;opacity:0;will-change:transform,opacity,filter}
+.prohlidka__snimek img{width:100%;height:100%;object-fit:cover}
+.prohlidka__snimek:first-child{opacity:1}
+.prohlidka__zavoj{position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(180deg,rgba(8,20,30,.55) 0%,rgba(8,20,30,0) 30%,rgba(8,20,30,0) 60%,rgba(8,20,30,.6) 100%),
+  linear-gradient(90deg,rgba(8,20,30,var(--tma,.55)) 0%,rgba(8,20,30,0) 65%)}
+.prohlidka__zablesk{position:absolute;inset:0;background:#fff7e8;opacity:0;pointer-events:none;mix-blend-mode:screen}
+.kapitola{position:absolute;left:0;right:0;padding:0 24px;color:#fff;opacity:0;pointer-events:none;will-change:opacity,transform}
+.kapitola.je-videt{pointer-events:auto}
+.kapitola .wrap{max-width:1180px}
+.kapitola--hero{top:50%;transform:translateY(-50%)}
+.kapitola--dole{bottom:12vh}
+.kapitola h1{color:#fff;font-size:clamp(2.1rem,5vw,3.8rem);max-width:820px;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.kapitola h2{color:#fff;font-size:clamp(1.6rem,3.6vw,2.8rem);max-width:640px;text-shadow:0 2px 24px rgba(0,0,0,.4)}
+.kapitola p{font-size:clamp(1rem,1.5vw,1.2rem);max-width:560px;text-shadow:0 1px 14px rgba(0,0,0,.5)}
+.kapitola .stitek{color:#fff}
+.kapitola__karta{display:inline-block;background:rgba(10,24,36,.42);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:26px 30px;max-width:600px}
+.kapitola__karta h2{font-size:clamp(1.4rem,2.6vw,2.1rem);text-shadow:none}
+.kapitola__karta p{text-shadow:none;margin-bottom:0}
+.vyhody-radek{display:flex;flex-wrap:wrap;gap:10px 22px;margin:26px 0 32px;padding:0;list-style:none;font-weight:600;font-size:.95rem}
+.vyhody-radek li{display:flex;align-items:center;gap:8px}
+.vyhody-radek .ikona{color:var(--slunce)}
+.hero-tlacitka{display:flex;flex-wrap:wrap;gap:12px}
+.scroll-napoveda{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);color:#fff;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:.9;transition:opacity .4s}
+.scroll-napoveda i{width:24px;height:38px;border:2px solid #fff;border-radius:14px;position:relative}
+.scroll-napoveda i::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;background:#fff;border-radius:2px;animation:kolecko 1.6s infinite}
+@keyframes kolecko{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(12px)}}
+.prohlidka__postup{position:absolute;right:28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:16px;list-style:none;margin:0;padding:0}
+.prohlidka__postup li{text-shadow:0 1px 6px rgba(0,0,0,.7);display:flex;align-items:center;justify-content:flex-end;gap:12px;color:rgba(255,255,255,.65);font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:color .3s}
+.prohlidka__postup li::after{content:"";width:10px;height:10px;border-radius:50%;border:2px solid currentColor;transition:background .3s,transform .3s}
+.prohlidka__postup li.aktivni{color:#fff}
+.prohlidka__postup li.aktivni::after{background:var(--slunce);border-color:var(--slunce);transform:scale(1.25)}
+.prohlidka__lista{position:absolute;left:0;bottom:0;height:3px;background:var(--slunce);width:0}
+
+/* Když si návštěvník nepřeje animace */
+@media (prefers-reduced-motion:reduce){
+  .prohlidka{height:auto}
+  .prohlidka__scena{position:relative;height:auto}
+  .prohlidka__snimek{position:relative;opacity:1!important;transform:none!important;filter:none!important;height:70vh}
+  .kapitola{position:relative;opacity:1!important;transform:none!important;padding:30px 24px;background:var(--navy)}
+  .kapitola--hero{top:auto}
+  .prohlidka__postup,.scroll-napoveda,.prohlidka__lista,.prohlidka__zablesk{display:none}
+  [data-reveal]{opacity:1!important;transform:none!important}
+}
+
+/* =========================================================
+   Objevování obsahu při scrollování
+   ========================================================= */
+[data-reveal]{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+[data-reveal="vlevo"]{transform:translateX(-50px)}
+[data-reveal="vpravo"]{transform:translateX(50px)}
+[data-reveal="zoom"]{transform:scale(.94)}
+[data-reveal].is-in{opacity:1;transform:none}
+[data-delay="1"]{transition-delay:.12s}
+[data-delay="2"]{transition-delay:.24s}
+[data-delay="3"]{transition-delay:.36s}
+[data-delay="4"]{transition-delay:.48s}
+
+/* ---------- Statistiky ---------- */
+.auto-stoji{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:center}
+.cisla{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+.cislo{background:var(--bila);border:1px solid var(--linka);border-radius:var(--radius);padding:22px 18px;text-align:center}
+.cislo b{display:block;font-size:2rem;color:var(--tyrkys);line-height:1.1}
+.cislo span{font-size:.85rem;color:var(--text-svetly)}
+.foto-ramec{position:relative;border-radius:22px;overflow:hidden;box-shadow:var(--stin)}
+.foto-ramec img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform .1s linear}
+.foto-ramec figcaption{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.92);color:var(--navy);font-size:.8rem;font-weight:600;padding:7px 12px;border-radius:999px}
+.foto-ramec--vysoky{aspect-ratio:4/5}
+.foto-ramec--siroky{aspect-ratio:16/10}
+
+/* ---------- Karty apartmánů ---------- */
+.karty{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.karta{background:var(--bila);border-radius:20px;overflow:hidden;box-shadow:var(--stin);display:flex;flex-direction:column;transition:transform .35s,box-shadow .35s}
+.karta:hover{transform:translateY(-6px);box-shadow:0 18px 44px rgba(15,42,61,.14)}
+.karta__foto{position:relative;aspect-ratio:4/3;overflow:hidden;display:block}
+.karta__foto img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.karta:hover .karta__foto img{transform:scale(1.06)}
+.karta__patro{position:absolute;left:14px;top:14px;background:rgba(255,255,255,.94);color:var(--navy);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 11px;border-radius:999px}
+.karta__telo{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+.karta h3{margin-bottom:.35em}
+.karta h3 a{color:inherit;text-decoration:none}
+.karta__kapacita{color:var(--text-svetly);font-size:.92rem;margin-bottom:16px}
+.parametry{list-style:none;margin:0 0 18px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:9px 12px;font-size:.88rem}
+.parametry li{display:flex;align-items:center;gap:8px}
+.parametry .ikona{width:19px;height:19px;color:var(--tyrkys)}
+.cena{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;border-top:1px solid var(--linka);padding-top:16px;margin-top:auto}
+.cena b{font-size:1.45rem;color:var(--navy)}
+.cena small{color:var(--text-svetly);font-size:.82rem}
+.tydny{margin:16px 0 18px}
+.tydny__nadpis{display:flex;justify-content:space-between;font-size:.76rem;font-weight:600;color:var(--text-svetly);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.tydny__radek{display:flex;gap:5px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x proximity;scrollbar-width:thin}
+.tyden{flex:0 0 46px;scroll-snap-align:start;border:0;border-radius:7px;padding:7px 0 6px;font-family:inherit;font-size:.68rem;font-weight:600;color:#fff;cursor:pointer;text-align:center;line-height:1.1;transition:transform .15s}
+.tyden:hover{transform:translateY(-2px)}
+.tyden--volno{background:var(--volno)}
+.tyden--obsazeno{background:var(--obsazeno);cursor:not-allowed;opacity:.88}
+.tyden--dotaz{background:#9aa9b5;cursor:pointer}
+.legenda{display:flex;gap:14px;font-size:.76rem;color:var(--text-svetly);margin-top:8px;flex-wrap:wrap}
+.legenda i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.legenda .l-volno{background:var(--volno)}
+.legenda .l-obsazeno{background:var(--obsazeno)}
+.legenda .l-vymena{background:linear-gradient(135deg,var(--volno) 50%,var(--obsazeno) 50%)}
+.karta__akce{display:flex;gap:10px;flex-wrap:wrap}
+.poznamka-tyden{margin-top:28px;text-align:center;color:var(--text-svetly);font-size:.95rem}
+.demo-stitek{display:inline-block;background:#fff4d6;color:#8a5a00;border:1px solid #f2d48b;font-size:.75rem;font-weight:600;padding:4px 10px;border-radius:999px}
+
+/* ---------- V ceně pobytu ---------- */
+.zdarma{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.zdarma__polozka{background:var(--bila);border:1px solid var(--linka);border-radius:var(--radius);padding:26px 22px}
+.zdarma__polozka .ikona{width:34px;height:34px;color:var(--tyrkys);margin-bottom:14px}
+.zdarma__polozka h3{font-size:1.02rem;margin-bottom:.3em}
+.zdarma__polozka p{font-size:.9rem;color:var(--text-svetly);margin:0}
+
+/* ---------- Pláž (velká fotka) ---------- */
+.plaz{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden;color:#fff}
+.plaz__foto{position:absolute;inset:-12% 0;will-change:transform}
+.plaz__foto img{width:100%;height:100%;object-fit:cover}
+.plaz::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,20,30,0) 25%,rgba(8,20,30,.78) 100%),linear-gradient(90deg,rgba(8,20,30,.45) 0%,rgba(8,20,30,0) 60%)}
+.plaz .wrap{position:relative;z-index:2;padding-bottom:80px;width:100%}
+.plaz h2{color:#fff;max-width:720px}
+.plaz p{max-width:600px;font-size:1.1rem}
+
+/* ---------- Ostrov Vir · scrollytelling ---------- */
+.ostrov{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.ostrov__obrazy{position:sticky;top:110px;aspect-ratio:4/5;border-radius:22px;overflow:hidden;box-shadow:var(--stin);background:var(--navy)}
+.ostrov__obrazy img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .9s,transform 1.6s}
+.ostrov__obrazy img.aktivni{opacity:1;transform:scale(1)}
+.ostrov__kroky{padding:10vh 0 20vh}
+.krok{min-height:62vh;display:flex;flex-direction:column;justify-content:center;opacity:.22;transition:opacity .6s}
+.krok.aktivni{opacity:1}
+.krok h3{font-size:clamp(1.4rem,2.4vw,1.9rem)}
+.krok .ikona{width:40px;height:40px;color:var(--tyrkys);margin-bottom:16px}
+
+/* ---------- Ceník ---------- */
+.cenik{width:100%;border-collapse:separate;border-spacing:0;background:var(--bila);border-radius:18px;overflow:hidden;box-shadow:var(--stin)}
+.cenik th,.cenik td{padding:20px 22px;text-align:left;border-bottom:1px solid var(--linka)}
+.cenik thead th{background:var(--navy);color:#fff;font-size:.85rem;letter-spacing:.04em;font-weight:600}
+.cenik tbody th{color:var(--navy)}
+.cenik tbody th small{display:block;font-weight:500;color:var(--text-svetly);font-size:.82rem}
+.cenik td b{font-size:1.15rem;color:var(--navy)}
+.cenik tr:last-child th,.cenik tr:last-child td{border-bottom:0}
+.cenik-pozn{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+.cenik-pozn div{background:var(--azur-svetla);border-radius:var(--radius);padding:18px 20px;font-size:.92rem}
+.cenik-pozn b{display:block;color:var(--navy);margin-bottom:4px}
+
+/* ---------- Příjezd ---------- */
+.prijezd{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.kroky-cislo{list-style:none;counter-reset:k;padding:0;margin:26px 0 0}
+.kroky-cislo li{counter-increment:k;position:relative;padding:0 0 22px 58px}
+.kroky-cislo li::before{content:counter(k);position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--slunce);color:var(--navy);font-weight:700;display:flex;align-items:center;justify-content:center}
+.kroky-cislo b{display:block;color:var(--navy)}
+.foto-dvojice{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.foto-dvojice .foto-ramec:last-child{margin-top:60px}
+
+/* ---------- Recenze ---------- */
+.recenze{max-width:860px;margin:0 auto;text-align:center}
+.recenze blockquote{margin:0;font-size:clamp(1.1rem,2vw,1.4rem);line-height:1.6;color:var(--navy);font-weight:500}
+.recenze blockquote::before{content:"“";display:block;font-size:5rem;line-height:.6;color:var(--slunce);margin-bottom:10px}
+.recenze figcaption{margin-top:22px;color:var(--text-svetly);font-size:.92rem}
+.recenze figcaption b{color:var(--navy)}
+
+/* ---------- Otázky (FAQ) ---------- */
+.faq{max-width:860px;margin:0 auto}
+.faq details{background:var(--bila);border:1px solid var(--linka);border-radius:var(--radius);margin-bottom:12px;overflow:hidden}
+.faq summary{list-style:none;cursor:pointer;padding:20px 56px 20px 24px;font-weight:600;color:var(--navy);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:1.6rem;font-weight:400;color:var(--tyrkys);transition:transform .3s}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq details p{padding:0 24px 20px;margin:0;color:var(--text)}
+
+/* ---------- Poptávka ---------- */
+.poptavka{position:relative;overflow:hidden}
+.poptavka__pozadi{position:absolute;inset:0}
+.poptavka__pozadi img{width:100%;height:100%;object-fit:cover}
+.poptavka__pozadi::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(251,248,242,.94) 0%,rgba(251,248,242,.86) 45%,rgba(251,248,242,.55) 100%)}
+.poptavka .wrap{position:relative;display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
+.formular{background:var(--bila);border-radius:22px;padding:34px;box-shadow:0 20px 50px rgba(15,42,61,.14)}
+.formular__mriz{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pole{display:flex;flex-direction:column;gap:6px}
+.pole--cele{grid-column:1/-1}
+.pole label{font-size:.82rem;font-weight:600;color:var(--navy)}
+.pole input,.pole select,.pole textarea{font-family:inherit;font-size:.95rem;padding:12px 14px;border:1.5px solid var(--linka);border-radius:10px;background:var(--krem);color:var(--text);width:100%}
+.pole input:focus,.pole select:focus,.pole textarea:focus{border-color:var(--azur);outline:0;background:#fff}
+.pole textarea{min-height:100px;resize:vertical}
+.pole small{color:var(--text-svetly);font-size:.78rem}
+.zaskrt{display:flex;gap:10px;align-items:flex-start;font-size:.88rem}
+.zaskrt input{margin-top:4px}
+.formular__pata{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px;flex-wrap:wrap}
+.formular__pata small{color:var(--text-svetly);font-size:.78rem;max-width:300px}
+.formular__hlaska{display:none;margin-top:16px;padding:14px 16px;border-radius:10px;font-size:.92rem}
+.formular__hlaska.ok{display:block;background:#e8f6ec;color:#1f6b36}
+.formular__hlaska.chyba{display:block;background:#fdecea;color:#9b2c22}
+.kontakt-seznam{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
+.kontakt-seznam li{display:flex;gap:14px;align-items:center}
+.kontakt-seznam .ikona{width:42px;height:42px;padding:10px;border-radius:50%;background:var(--azur-svetla);color:var(--tyrkys)}
+.kontakt-seznam a{color:var(--navy);font-weight:600;text-decoration:none}
+.kontakt-seznam small{display:block;color:var(--text-svetly);font-size:.78rem}
+
+/* ---------- Mapa ---------- */
+.mapa{display:grid;grid-template-columns:1fr 1.6fr;gap:40px;align-items:center}
+.mapa__ramec{position:relative;aspect-ratio:16/10;border-radius:20px;overflow:hidden;background:var(--azur-svetla) url(../../img/okoli-pohled-na-plaz-m.jpg) center/cover;box-shadow:var(--stin)}
+.mapa__ramec iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mapa__nacist{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(15,42,61,.55);color:#fff;text-align:center;padding:20px}
+.mapa__nacist p{margin:0;font-size:.85rem;max-width:340px}
+
+/* ---------- Patička ---------- */
+.paticka{background:var(--pisek);padding:70px 0 30px;font-size:.92rem}
+.paticka__mriz{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.paticka h4{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tyrkys)}
+.paticka ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.paticka a{color:var(--text);text-decoration:none}
+.paticka a:hover{color:var(--tyrkys)}
+.paticka__spodek{border-top:1px solid var(--linka);margin-top:50px;padding-top:24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--text-svetly);font-size:.82rem}
+.odkaz-tlacitko{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
+
+/* ---------- Cookies lišta ---------- */
+.cookies{position:fixed;right:20px;bottom:20px;margin-left:20px;z-index:150;max-width:560px;background:var(--bila);border-radius:16px;box-shadow:0 16px 50px rgba(15,42,61,.25);padding:22px 24px;font-size:.88rem;display:none}
+.cookies.je-videt{display:block}
+.cookies p{margin:0 0 14px}
+.cookies__akce{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ---------- Plovoucí tlačítko (mobil) ---------- */
+.plovouci{position:fixed;right:16px;bottom:16px;z-index:90;display:none;box-shadow:0 10px 30px rgba(15,42,61,.3)}
+
+/* =========================================================
+   STRÁNKA APARTMÁNU
+   ========================================================= */
+.apt-hero{position:relative;height:78vh;min-height:520px;overflow:hidden;color:#fff;display:flex;align-items:flex-end}
+.apt-hero__foto{position:absolute;inset:-10% 0;will-change:transform}
+.apt-hero__foto img{width:100%;height:100%;object-fit:cover}
+.apt-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,20,30,.45) 0%,rgba(8,20,30,0) 30%,rgba(8,20,30,.7) 100%)}
+.apt-hero .wrap{position:relative;z-index:2;padding-bottom:60px;width:100%}
+.apt-hero h1{color:#fff;font-size:clamp(2.2rem,5vw,3.8rem);margin-bottom:.2em}
+.apt-hero p{font-size:1.15rem;max-width:620px}
+.drobky{font-size:.82rem;margin-bottom:14px;opacity:.9}
+.drobky a{color:#fff}
+.apt-info{display:grid;grid-template-columns:1.5fr 1fr;gap:60px;align-items:start}
+.apt-panel{position:sticky;top:100px;background:var(--bila);border-radius:20px;padding:28px;box-shadow:var(--stin)}
+.apt-panel .cena{border:0;padding:0;margin-bottom:6px}
+.apt-panel table{width:100%;font-size:.92rem;margin:12px 0 20px;border-collapse:collapse}
+.apt-panel td{padding:8px 0;border-bottom:1px solid var(--linka)}
+.apt-panel td:last-child{text-align:right;font-weight:700;color:var(--navy)}
+.vybaveni{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:30px}
+.vybaveni h3{font-size:1rem;display:flex;align-items:center;gap:10px}
+.vybaveni h3 .ikona{color:var(--tyrkys)}
+.vybaveni ul{margin:0;padding-left:18px;color:var(--text);font-size:.95rem}
+.vybaveni li{margin-bottom:4px}
+.galerie{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.galerie a{display:block;border-radius:14px;overflow:hidden;position:relative;aspect-ratio:4/3;background:var(--pisek)}
+.galerie a:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.galerie img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.galerie a:hover img{transform:scale(1.05)}
+.galerie span{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);color:var(--navy);font-size:.75rem;font-weight:600;padding:5px 10px;border-radius:999px}
+.lightbox{position:fixed;inset:0;z-index:300;background:rgba(6,16,24,.94);display:none;align-items:center;justify-content:center;padding:40px}
+.lightbox.je-videt{display:flex}
+.lightbox img{max-height:86vh;max-width:92vw;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lightbox p{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#fff;font-size:.9rem;margin:0}
+.lightbox button{position:absolute;background:rgba(255,255,255,.12);border:0;color:#fff;width:52px;height:52px;border-radius:50%;font-size:1.6rem;cursor:pointer}
+.lightbox button:hover{background:rgba(255,255,255,.25)}
+.lb-zavrit{top:20px;right:20px}
+.lb-pred{left:20px;top:50%;transform:translateY(-50%)}
+.lb-dal{right:20px;top:50%;transform:translateY(-50%)}
+
+/* Kalendář s půlenými sobotami */
+.kal-ovladani{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.kal-ovladani button{background:var(--bila);border:1.5px solid var(--linka);width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer;color:var(--navy)}
+.kal-ovladani button:disabled{opacity:.3;cursor:default}
+.kalendare{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
+.mesic{background:var(--bila);border-radius:18px;padding:22px;box-shadow:var(--stin)}
+.mesic h3{text-align:center;font-size:1.05rem;text-transform:capitalize}
+.mesic__mriz{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.mesic__mriz .dn{font-size:.72rem;font-weight:700;text-align:center;color:var(--text-svetly);padding-bottom:6px}
+.den{aspect-ratio:1;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:600;color:#fff;position:relative}
+.den--prazdny{background:transparent}
+.den--volno{background:var(--volno)}
+.den--obsazeno{background:var(--obsazeno)}
+.den--prijezd{background:linear-gradient(135deg,var(--volno) 50%,var(--obsazeno) 50%)}
+.den--odjezd{background:linear-gradient(135deg,var(--obsazeno) 50%,var(--volno) 50%)}
+.den--vymena{background:linear-gradient(135deg,var(--obsazeno) 49%,#fff 49%,#fff 51%,var(--obsazeno) 51%)}
+.den--mimo{background:#e9eef2;color:#8a99a6}
+.den--minulost{opacity:.35}
+.den span{text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.den--mimo span{text-shadow:none}
+.dalsi-apt{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+
+/* Text stránky (ochrana údajů) */
+.text-stranka{max-width:820px;margin:0 auto;padding:150px 24px 100px}
+.text-stranka h2{font-size:1.4rem;margin-top:2em}
+
+/* =========================================================
+   Responzivita
+   ========================================================= */
+@media (max-width:1080px){
+  .zdarma{grid-template-columns:repeat(2,1fr)}
+  .paticka__mriz{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  body{font-size:16px}
+  .sekce{padding:80px 0}
+  .menu{position:fixed;inset:76px 0 auto 0;background:var(--krem);color:var(--navy);flex-direction:column;align-items:flex-start;gap:0;padding:10px 24px 24px;box-shadow:0 20px 30px rgba(15,42,61,.12);transform:translateY(-130%);transition:transform .35s}
+  .menu.je-otevrene{transform:none}
+  .menu a{padding:12px 0;font-size:1.05rem;width:100%;border-bottom:1px solid var(--linka)}
+  .menu .btn{margin-top:14px;width:auto;border:0}
+  .menu .jazyk{margin-top:14px}
+  .menu .jazyk .aktivni em{color:#fff}
+  .burger{display:block}
+  .auto-stoji,.ostrov,.prijezd,.apt-info,.mapa,.poptavka .wrap{grid-template-columns:1fr;gap:40px}
+  .karty{grid-template-columns:1fr;max-width:520px;margin:0 auto}
+  .ostrov__obrazy{position:sticky;top:76px;aspect-ratio:16/10;z-index:2}
+  .krok{min-height:48vh}
+  .ostrov__kroky{padding:4vh 0 10vh}
+  .cenik-pozn{grid-template-columns:1fr}
+  .prohlidka__postup{display:none}
+  .apt-panel{position:static}
+  .kalendare{grid-template-columns:1fr}
+  .dalsi-apt{grid-template-columns:1fr}
+  body.po-prohlidce .plovouci{display:inline-flex}
+}
+@media (max-width:768px){
+  .cenik thead{display:none}
+  .cenik,.cenik tbody,.cenik tr,.cenik th,.cenik td{display:block;width:100%}
+  .cenik tr{border-bottom:1px solid var(--linka);padding:14px 0}
+  .cenik th,.cenik td{border:0;padding:6px 20px}
+  .cenik td::before{content:attr(data-sloupec);display:block;font-size:.75rem;color:var(--text-svetly);font-weight:600}
+  .formular__mriz{grid-template-columns:1fr}
+  .vybaveni{grid-template-columns:1fr}
+  .cisla{grid-template-columns:repeat(2,1fr)}
+  .kapitola--dole{bottom:9vh}
+  .kapitola__karta{padding:20px 22px}
+}
+@media (max-width:600px){.galerie a:first-child{grid-column:auto;grid-row:auto;aspect-ratio:4/3}}
+@media (max-width:420px){
+  .zdarma{grid-template-columns:1fr}
+  .paticka__mriz{grid-template-columns:1fr}
+  .formular{padding:24px 18px}
+  .vyhody-radek{gap:8px 16px;font-size:.85rem}
+}
+.text-stranka .drobky a{color:var(--tyrkys)}
+
+.bez-auta{margin-top:10px;background:var(--azur-svetla);border-radius:var(--radius);padding:22px 24px}
+.bez-auta h3{display:flex;align-items:center;gap:10px;font-size:1.1rem}
+.bez-auta h3 .ikona{color:var(--tyrkys)}
+.bez-auta ul{margin:0 0 10px;padding-left:20px}
+.bez-auta li{margin-bottom:4px}
+.bez-auta p{margin-bottom:8px}
+
+/* ---------- Prezentace: cesta od domu k moři ---------- */
+.prezentace{position:relative;height:min(72vh,640px);background:var(--navy)}
+.prezentace img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:none;will-change:transform,opacity}
+.prezentace img.aktivni{opacity:1}
+.prezentace figcaption{transition:opacity .4s}
+.prezentace__tecky{position:absolute;right:16px;bottom:20px;display:flex;gap:6px}
+.prezentace__tecky i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55);transition:background .3s,transform .3s}
+.prezentace__tecky i.aktivni{background:var(--slunce);transform:scale(1.3)}
+@media (min-width:901px){
+  .poloha{padding:0}
+  .poloha-pin{height:300vh}
+  .poloha-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;padding-top:60px}
+  .poloha-sticky .wrap{width:100%}
+}
+@media (max-width:900px){.prezentace{height:auto;aspect-ratio:4/5}}

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+# Náhled: stránky mají značku noindex

@@ -21,7 +21,7 @@
 <meta name="geo.position" content="44.30928;15.085458">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/montserrat-latin-ext-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/style.css?v=3d3b6a1d">
+<link rel="stylesheet" href="assets/css/style.css?v=2e70676d">
 <script type="application/ld+json">{
  "@context": "https://schema.org",
  "@type": "WebPage",
@@ -48,24 +48,41 @@
   </nav>
  </div>
 </header>
-<main id="obsah">
+<main id="obsah" class="text-stranka" style="text-align:center">
 
-<section class="apt-hero">
- <div class="apt-hero__foto" data-parallax="0.15"><picture><source type="image/webp" srcset="img/tour-1-dvur-vecer-m.webp 800w, img/tour-1-dvur-vecer.webp 1920w" sizes="(max-width:900px) 100vw, 50vw"><img src="img/tour-1-dvur-vecer.jpg" srcset="img/tour-1-dvur-vecer-m.jpg 800w, img/tour-1-dvur-vecer.jpg 1920w" sizes="(max-width:900px) 100vw, 50vw" alt="Dům s apartmány na ostrově Vir večer: osvětlený kamenný dvůr s palmami za bránou" decoding="async" ></picture></div>
- <div class="wrap">
-  <nav class="drobky" aria-label="Drobečková navigace"><a href="./">Apartmány Vir</a> / Stránka nenalezena</nav>
-  <h1>Tudy se na dovolenou nejede</h1>
-  <p>Asi jste špatně odbočili. Moře je jinudy. Chtěli jste na:</p>
-  <div class="hero-tlacitka" style="margin-top:22px">
-   <a class="btn btn--azur" href="./">Úvod</a>
-   <a class="btn btn--bila" href="apartman-1">Apartmán 1</a>
-   <a class="btn btn--bila" href="apartman-2">Apartmán 2</a>
-   <a class="btn btn--bila" href="apartman-3">Apartmán 3</a>
-   <a class="btn btn--bila" href="./#cenik">Ceník</a>
-   <a class="btn btn--azur" href="./#poptavka">Poslat poptávku</a>
-  </div>
+ <p class="drobky"><a href="./">Apartmány Vir</a> / Stránka nenalezena</p>
+ <h1>Tudy se na dovolenou nejede</h1>
+ <p class="uvod" style="margin:0 auto">Asi jste špatně odbočili. Moře je jinudy. Chtěli jste na:</p>
+ <div class="chyba-scena" aria-hidden="true">
+  <svg class="chyba-svg" viewBox="0 0 400 150" preserveAspectRatio="xMidYMax meet" focusable="false">
+   <line x1="0" y1="124" x2="400" y2="124" stroke="var(--linka)" stroke-width="3" stroke-linecap="round"/>
+   <rect x="316" y="52" width="6" height="72" rx="2" fill="var(--navy)"/>
+   <g transform="translate(319,48) rotate(180)">
+    <rect x="-42" y="-16" width="84" height="32" rx="6" fill="var(--azur)" stroke="var(--navy)" stroke-width="2"/>
+    <text x="-26" y="6" font-family="var(--font)" font-size="15" font-weight="700" fill="var(--bila)" text-anchor="middle">Vir</text>
+    <path d="M -4 0 H 24 M 18 -7 L 32 0 L 18 7 Z" fill="none" stroke="var(--bila)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+   </g>
+   <g class="chyba-auto">
+    <rect x="210" y="100" width="90" height="18" rx="9" fill="var(--slunce)"/>
+    <rect x="228" y="84" width="46" height="20" rx="10" fill="var(--slunce)"/>
+    <rect x="232" y="89" width="16" height="10" rx="2" fill="var(--azur-svetla)"/>
+    <rect x="254" y="89" width="16" height="10" rx="2" fill="var(--azur-svetla)"/>
+    <rect x="239" y="70" width="24" height="15" rx="3" fill="var(--tyrkys)" stroke="var(--navy)" stroke-width="1.5"/>
+    <rect x="247" y="65" width="8" height="6" rx="2" fill="none" stroke="var(--navy)" stroke-width="1.5"/>
+    <circle cx="230" cy="114" r="10" fill="var(--navy)"/>
+    <circle cx="278" cy="114" r="10" fill="var(--navy)"/>
+    <text class="chyba-otaznik" x="251" y="54" font-family="var(--font)" font-size="20" font-weight="700" fill="var(--navy)" text-anchor="middle">?</text>
+   </g>
+  </svg>
  </div>
-</section>
+ <div class="hero-tlacitka" style="justify-content:center;margin:26px auto 0;max-width:560px">
+  <a class="btn btn--azur" href="./">Úvod</a>
+  <a class="btn btn--obrys" href="apartman-1">Apartmán 1</a>
+  <a class="btn btn--obrys" href="apartman-2">Apartmán 2</a>
+  <a class="btn btn--obrys" href="apartman-3">Apartmán 3</a>
+  <a class="btn btn--obrys" href="./#cenik">Ceník</a>
+  <a class="btn btn--azur" href="./#poptavka">Poslat poptávku</a>
+ </div>
 </main>
 <footer class="paticka">
  <div class="wrap">

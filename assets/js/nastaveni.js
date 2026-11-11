@@ -39,9 +39,9 @@ window.VIR = {
   },
 
   apartmany: {
-    1: { nazev: "Apartmán 1", osob: 4, url: "apartman-1.html" },
-    2: { nazev: "Apartmán 2", osob: 4, url: "apartman-2.html" },
-    3: { nazev: "Apartmán 3", osob: 6, url: "apartman-3.html" }
+    1: { nazev: "Apartmán 1", osob: 4, url: "apartman-1" },
+    2: { nazev: "Apartmán 2", osob: 4, url: "apartman-2" },
+    3: { nazev: "Apartmán 3", osob: 6, url: "apartman-3" }
   },
 
   /* UKÁZKOVÁ OBSAZENOST · jen pro náhled vzhledu, po napojení kalendáře se nepoužije */

@@ -287,7 +287,7 @@
           b.textContent = kratce(s);
           var cena = cenaTydne(apt, s);
           b.title = dlouze(s) + " až " + dlouze(plusDny(s, 7)) + (obs ? " · obsazeno" : " · volno" + (cena ? " · " + kc(cena) : ""));
-          if (!obs) b.href = "index.html?apt=" + apt + "&od=" + iso(s) + "#poptavka";
+          if (!obs) b.href = "./?apt=" + apt + "&od=" + iso(s) + "#poptavka";
           radek.appendChild(b);
         });
       });
@@ -306,8 +306,32 @@
       selPrijezd.appendChild(o);
     });
     var odjezdInfo = $("#f-odjezd-info", form);
+    // obsazené soboty u vybraného apartmánu nejde vybrat
+    function oznacObsazene() {
+      var apt = selApt.value;
+      Array.prototype.forEach.call(selPrijezd.options, function (o) {
+        if (!o.value) return;
+        var obs = apt && rezervace ? tydenObsazeny(apt, d(o.value)) : false;
+        o.disabled = obs;
+        o.textContent = "sobota " + dlouze(d(o.value)) + (obs ? " (obsazeno)" : "");
+      });
+      if (selPrijezd.selectedOptions[0] && selPrijezd.selectedOptions[0].disabled) selPrijezd.value = "";
+    }
+    function terminObsazeny() {
+      var apt = selApt.value;
+      if (!apt || !selPrijezd.value || !rezervace) return false;
+      var t = +selTydny.value || 1, s = d(selPrijezd.value);
+      for (var i = 0; i < t; i++) if (tydenObsazeny(apt, plusDny(s, 7 * i))) return true;
+      return false;
+    }
     function prepocti() {
+      odjezdInfo.style.color = "";
       if (!selPrijezd.value) { odjezdInfo.textContent = "Odjezd vždy v sobotu."; return; }
+      if (terminObsazeny()) {
+        odjezdInfo.textContent = "V tomto termínu je apartmán už obsazený. Vyberte prosím jiný termín, jiný apartmán nebo kratší pobyt.";
+        odjezdInfo.style.color = "var(--cervena)";
+        return;
+      }
       var t = +selTydny.value || 1, s = d(selPrijezd.value), konec = plusDny(s, 7 * t);
       var apt = selApt.value, suma = 0, naDotaz = false;
       for (var i = 0; i < t; i++) { var c = cenaTydne(apt, plusDny(s, 7 * i)); if (c) suma += c; else naDotaz = true; }
@@ -316,7 +340,9 @@
       else if (apt && naDotaz) txt += " Cena v tomto termínu na dotaz.";
       odjezdInfo.textContent = txt;
     }
-    [selPrijezd, selApt, selTydny].forEach(function (el) { el.addEventListener("change", prepocti); });
+    [selPrijezd, selTydny].forEach(function (el) { el.addEventListener("change", prepocti); });
+    selApt.addEventListener("change", function () { oznacObsazene(); prepocti(); });
+    nactiRezervace().then(function () { oznacObsazene(); prepocti(); });
     // předvyplnění z odkazu (?apt=1&od=2027-06-05)
     var q = new URLSearchParams(window.location.search);
     if (q.get("apt")) selApt.value = q.get("apt");
@@ -328,6 +354,11 @@
       var hl = $(".formular__hlaska", form);
       hl.className = "formular__hlaska";
       if (!form.checkValidity()) { form.reportValidity(); return; }
+      if (terminObsazeny()) {
+        hl.classList.add("chyba");
+        hl.textContent = "Vybraný termín je u tohoto apartmánu obsazený. Vyberte prosím jiný termín nebo apartmán.";
+        return;
+      }
       var data = {};
       new FormData(form).forEach(function (v, k) { data[k] = v; });
       if (data.web) return; // pole proti robotům

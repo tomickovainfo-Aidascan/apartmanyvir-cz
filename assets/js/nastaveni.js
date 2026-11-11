@@ -24,8 +24,12 @@ window.VIR = {
      Načte se jen po souhlasu návštěvníka na liště cookies. Prázdné = vypnuto. */
   ga4Id: "",
 
-  /* Sezóna, kterou nabízíme v poptávce a kalendáři */
-  sezona: { od: "2027-05-01", do: "2027-10-31" },
+  /* Kalendář a poptávka: od aktuálního měsíce do konce roku uvedeného níže.
+     Prázdné "do" = automaticky do konce příštího roku. */
+  rozsah: { do: "" },
+
+  /* Rok léta, jehož týdny ukazují karty apartmánů na úvodní stránce */
+  letniSezona: 2027,
 
   /* Ceny za týden (sobota až sobota), Kč. null = na dotaz */
   ceny: {

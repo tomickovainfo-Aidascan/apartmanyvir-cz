@@ -24,6 +24,13 @@
     while (x <= konec) { out.push(new Date(x)); x = plusDny(x, 7); }
     return out;
   }
+  // rozsah kalendáře: od 1. dne aktuálního měsíce do konce příštího roku (nebo podle nastavení)
+  var ROZSAH = (function () {
+    var t = new Date();
+    var od = t.getFullYear() + "-" + ("0" + (t.getMonth() + 1)).slice(-2) + "-01";
+    var doo = (V.rozsah && V.rozsah.do) || (t.getFullYear() + 1) + "-12-31";
+    return { od: od, do: doo };
+  })();
   function cenaTydne(apt, sobota) {
     var m = sobota.getMonth() + 1, c = (V.ceny || {})[apt];
     if (!c) return null;
@@ -268,7 +275,7 @@
     nactiRezervace().then(function () {
       radky.forEach(function (radek) {
         var apt = radek.getAttribute("data-tydny");
-        var rok = V.sezona.od.slice(0, 4);
+        var rok = String(V.letniSezona || new Date().getFullYear() + 1);
         var dnesIso = iso(new Date());
         var start = dnesIso > rok + "-06-01" ? dnesIso : rok + "-06-01";
         var tydny = soboty(start, rok + "-09-24");
@@ -291,7 +298,8 @@
   var form = $("#poptavka-form");
   if (form) {
     var selPrijezd = $("#f-prijezd", form), selApt = $("#f-apt", form), selTydny = $("#f-tydny", form);
-    soboty(V.sezona.od, V.sezona.do).forEach(function (s) {
+    var zitra = iso(plusDny(new Date(), 1));
+    soboty(zitra > ROZSAH.od ? zitra : ROZSAH.od, ROZSAH.do).forEach(function (s) {
       var o = document.createElement("option");
       o.value = iso(s);
       o.textContent = "sobota " + dlouze(s);
@@ -442,15 +450,14 @@
   if (kal) {
     var apt = kal.getAttribute("data-kalendar");
     var mesice = [];
-    var x = d(V.sezona.od); x.setDate(1);
-    while (x <= d(V.sezona.do)) { mesice.push(new Date(x)); x.setMonth(x.getMonth() + 1); }
+    var x = d(ROZSAH.od); x.setDate(1);
+    while (x <= d(ROZSAH.do)) { mesice.push(new Date(x)); x.setMonth(x.getMonth() + 1); }
     var posun = 0, naraz = window.innerWidth < 900 ? 1 : 2;
     var obal = $(".kalendare", kal), pred = $("[data-kal-pred]", kal), dal = $("[data-kal-dal]", kal), titul = $("[data-kal-titul]", kal);
-    // začít měsícem s první cenou (červen), aby návštěvník hned viděl hlavní sezónu
-    for (var mi = 0; mi < mesice.length; mi++) if (mesice[mi].getMonth() === 5) { posun = mi; break; }
+    // kalendář začíná aktuálním měsícem
     var DNY = ["Po", "Út", "St", "Čt", "Pá", "So", "Ne"];
     var dnes = new Date(); dnes.setHours(0, 0, 0, 0);
-    var sezOd = d(V.sezona.od), sezDo = d(V.sezona.do);
+    var sezOd = d(ROZSAH.od), sezDo = d(ROZSAH.do);
     function mesic(m) {
       var el = document.createElement("div"); el.className = "mesic";
       var nazev = m.toLocaleDateString("cs-CZ", { month: "long", year: "numeric" });

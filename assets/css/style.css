@@ -37,8 +37,10 @@
 }
 
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;font-family:var(--font);font-size:17px;line-height:1.65;color:var(--text);background:var(--krem);-webkit-font-smoothing:antialiased}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{overflow-x:clip}
+section[id],[id="poptavka"]{scroll-margin-top:72px}
+body{margin:0;font-family:var(--font);font-size:1.0625rem;line-height:1.65;color:var(--text);background:var(--krem);-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 figure{margin:0}
 a{color:var(--tyrkys)}
@@ -117,7 +119,8 @@ p{margin:0 0 1em}
 .kapitola--dole{bottom:12vh}
 .kapitola h1{color:#fff;font-size:clamp(2.1rem,5vw,3.8rem);max-width:820px;text-shadow:0 2px 30px rgba(0,0,0,.35)}
 .kapitola h2{color:#fff;font-size:clamp(1.6rem,3.6vw,2.8rem);max-width:640px;text-shadow:0 2px 24px rgba(0,0,0,.4)}
-.kapitola p{font-size:clamp(1rem,1.5vw,1.2rem);max-width:560px;text-shadow:0 1px 14px rgba(0,0,0,.5)}
+.kapitola p{font-size:clamp(1rem,1.5vw,1.2rem);max-width:560px;text-shadow:0 1px 3px rgba(0,0,0,.7),0 2px 18px rgba(0,0,0,.6)}
+.kapitola--hero .vyhody-radek li{text-shadow:0 1px 3px rgba(0,0,0,.8)}
 .kapitola .stitek{color:#fff}
 .kapitola__karta{display:inline-block;background:rgba(10,24,36,.42);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:26px 30px;max-width:600px}
 .kapitola__karta h2{font-size:clamp(1.4rem,2.6vw,2.1rem);text-shadow:none}
@@ -165,7 +168,7 @@ p{margin:0 0 1em}
 .auto-stoji{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:center}
 .cisla{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
 .cislo{background:var(--bila);border:1px solid var(--linka);border-radius:var(--radius);padding:22px 18px;text-align:center}
-.cislo b{display:block;font-size:2rem;color:var(--tyrkys);line-height:1.1}
+.cislo b{display:block;font-size:clamp(1.5rem,2.4vw,2rem);color:var(--tyrkys);line-height:1.1;white-space:nowrap}
 .cislo span{font-size:.85rem;color:var(--text-svetly)}
 .foto-ramec{position:relative;border-radius:22px;overflow:hidden;box-shadow:var(--stin)}
 .foto-ramec img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform .1s linear}
@@ -230,7 +233,7 @@ p{margin:0 0 1em}
 .ostrov__obrazy img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .9s,transform 1.6s}
 .ostrov__obrazy img.aktivni{opacity:1;transform:scale(1)}
 .ostrov__kroky{padding:10vh 0 20vh}
-.krok{min-height:62vh;display:flex;flex-direction:column;justify-content:center;opacity:.22;transition:opacity .6s}
+.krok{min-height:min(62vh,560px);display:flex;flex-direction:column;justify-content:center;opacity:.22;transition:opacity .6s}
 .krok.aktivni{opacity:1}
 .krok h3{font-size:clamp(1.4rem,2.4vw,1.9rem)}
 .krok .ikona{width:40px;height:40px;color:var(--tyrkys);margin-bottom:16px}
@@ -287,8 +290,8 @@ p{margin:0 0 1em}
 .pole input:focus,.pole select:focus,.pole textarea:focus{border-color:var(--azur);outline:0;background:#fff}
 .pole textarea{min-height:100px;resize:vertical}
 .pole small{color:var(--text-svetly);font-size:.78rem}
-.zaskrt{display:flex;gap:10px;align-items:flex-start;font-size:.88rem}
-.zaskrt input{margin-top:4px}
+.zaskrt{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;font-weight:500;color:var(--text);text-align:left}
+.pole .zaskrt input,.zaskrt input{width:20px;height:20px;flex:0 0 20px;margin:2px 0 0;padding:0;accent-color:var(--azur)}
 .formular__pata{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px;flex-wrap:wrap}
 .formular__pata small{color:var(--text-svetly);font-size:.78rem;max-width:300px}
 .formular__hlaska{display:none;margin-top:16px;padding:14px 16px;border-radius:10px;font-size:.92rem}
@@ -394,13 +397,7 @@ p{margin:0 0 1em}
 /* =========================================================
    Responzivita
    ========================================================= */
-@media (max-width:1080px){
-  .zdarma{grid-template-columns:repeat(2,1fr)}
-  .paticka__mriz{grid-template-columns:1fr 1fr}
-}
-@media (max-width:900px){
-  body{font-size:16px}
-  .sekce{padding:80px 0}
+@media (max-width:1100px){
   .menu{position:fixed;inset:76px 0 auto 0;background:var(--krem);color:var(--navy);flex-direction:column;align-items:flex-start;gap:0;padding:10px 24px 24px;box-shadow:0 20px 30px rgba(15,42,61,.12);transform:translateY(-130%);transition:transform .35s}
   .menu.je-otevrene{transform:none}
   .menu a{padding:12px 0;font-size:1.05rem;width:100%;border-bottom:1px solid var(--linka)}
@@ -408,6 +405,16 @@ p{margin:0 0 1em}
   .menu .jazyk{margin-top:14px}
   .menu .jazyk .aktivni em{color:#fff}
   .burger{display:block}
+  .menu{max-height:calc(100vh - 76px);overflow:auto}
+}
+@media (max-width:1240px) and (min-width:901px){.prohlidka__postup li{font-size:0;gap:0}}
+@media (max-width:1080px){
+  .zdarma{grid-template-columns:repeat(2,1fr)}
+  .paticka__mriz{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  body{font-size:16px}
+  .sekce{padding:80px 0}
   .auto-stoji,.ostrov,.prijezd,.apt-info,.mapa,.poptavka .wrap{grid-template-columns:1fr;gap:40px}
   .karty{grid-template-columns:1fr;max-width:520px;margin:0 auto}
   .ostrov__obrazy{position:sticky;top:76px;aspect-ratio:16/10;z-index:2}
@@ -420,6 +427,14 @@ p{margin:0 0 1em}
   .dalsi-apt{grid-template-columns:1fr}
   body.po-prohlidce .plovouci{display:inline-flex}
 }
+@media (max-width:900px){
+  [data-reveal="vlevo"],[data-reveal="vpravo"]{transform:translateY(40px)}
+  .prohlidka__zavoj{background:linear-gradient(180deg,rgba(8,20,30,.55) 0%,rgba(8,20,30,0) 25%,rgba(8,20,30,0) 60%,rgba(8,20,30,.65) 100%),linear-gradient(rgba(8,20,30,var(--tma,.55)),rgba(8,20,30,var(--tma,.55)))}
+  .kal-ovladani{flex-wrap:nowrap}
+  .kal-ovladani .legenda{flex:1;justify-content:center;gap:8px 12px}
+  .kal-ovladani button{flex:0 0 44px}
+}
+@media (max-width:600px){.scroll-napoveda{display:none}}
 @media (max-width:768px){
   .cenik thead{display:none}
   .cenik,.cenik tbody,.cenik tr,.cenik th,.cenik td{display:block;width:100%}
@@ -450,16 +465,32 @@ p{margin:0 0 1em}
 
 /* ---------- Prezentace: cesta od domu k moři ---------- */
 .prezentace{position:relative;height:min(72vh,640px);background:var(--navy)}
+.prezentace__pas{position:absolute;inset:0}
 .prezentace img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:none;will-change:transform,opacity}
 .prezentace img.aktivni{opacity:1}
 .prezentace figcaption{transition:opacity .4s}
 .prezentace__tecky{position:absolute;right:16px;bottom:20px;display:flex;gap:6px}
-.prezentace__tecky i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55);transition:background .3s,transform .3s}
-.prezentace__tecky i.aktivni{background:var(--slunce);transform:scale(1.3)}
+.prezentace__tecky{z-index:2}
+.prezentace__tecky button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.6);cursor:pointer;transition:background .3s,transform .3s}
+.prezentace__tecky button.aktivni{background:var(--slunce);transform:scale(1.3)}
+.prezentace figcaption{z-index:2}
 @media (min-width:901px){
   .poloha{padding:0}
   .poloha-pin{height:300vh}
   .poloha-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;padding-top:60px}
   .poloha-sticky .wrap{width:100%}
 }
-@media (max-width:900px){.prezentace{height:auto;aspect-ratio:4/5}}
+@media (max-width:900px){
+  .prezentace{height:auto;aspect-ratio:4/5}
+  .prezentace__pas{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .prezentace__pas::-webkit-scrollbar{display:none}
+  .prezentace img{position:relative;flex:0 0 100%;opacity:1!important;transform:none!important;scroll-snap-align:center}
+  .prezentace__tecky{bottom:22px}
+  .prezentace__tecky button{width:11px;height:11px}
+}
+
+/* ---------- Velké monitory ---------- */
+@media (min-width:1700px){html{font-size:112.5%}:root{--max:1320px}.hlavicka .wrap{max-width:1480px}}
+@media (min-width:2200px){html{font-size:125%}:root{--max:1480px}.hlavicka .wrap{max-width:1680px}.prezentace{height:min(72vh,820px)}}
+/* plovoucí tlačítko schovat u formuláře */
+body.u-formulare .plovouci{display:none!important}

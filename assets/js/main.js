@@ -161,10 +161,35 @@
   var prez = malePohyby ? null : $("[data-prezentace]");
   var prezSnimky = prez ? $$(".prezentace img", prez) : [];
   var prezPopis = prez ? $(".prezentace figcaption", prez) : null;
-  var prezTecky = prez ? $$(".prezentace__tecky i", prez) : [];
+  var prezTecky = $$(".prezentace__tecky button");
+  var prezPas = $(".prezentace__pas");
+  var prezPopisVse = $(".prezentace figcaption");
+  var prezSnimkyVse = $$(".prezentace img");
+  var mobilPrez = function () { return window.innerWidth <= 900; };
+  function oznacPrezentaci(akt) {
+    if (prezPopisVse && prezSnimkyVse[akt]) prezPopisVse.textContent = prezSnimkyVse[akt].getAttribute("data-popisek");
+    prezTecky.forEach(function (t, i) { t.classList.toggle("aktivni", i === akt); });
+  }
+  // mobil a tablet: listování prstem
+  if (prezPas) {
+    prezPas.addEventListener("scroll", function () {
+      if (!mobilPrez()) return;
+      oznacPrezentaci(Math.round(prezPas.scrollLeft / prezPas.clientWidth));
+    }, { passive: true });
+    prezTecky.forEach(function (t, i) {
+      t.addEventListener("click", function () {
+        if (mobilPrez()) prezPas.scrollTo({ left: i * prezPas.clientWidth, behavior: "smooth" });
+        else if (prez) {
+          var r = prez.getBoundingClientRect(), n = prezSnimkyVse.length;
+          window.scrollTo({ top: window.scrollY + r.top + (r.height - window.innerHeight) * (i / (n - 1)) + 2, behavior: "smooth" });
+        }
+      });
+    });
+    oznacPrezentaci(0);
+  }
   var prezAkt = -1;
   function vykresliPrezentaci() {
-    if (!prez || !prezSnimky.length) return;
+    if (!prez || !prezSnimky.length || mobilPrez()) return;
     var vh = window.innerHeight, r = prez.getBoundingClientRect(), p;
     if (r.height > vh * 1.5) p = clamp(-r.top / (r.height - vh), 0, 1);
     else { var f = $(".prezentace", prez).getBoundingClientRect(); p = clamp((vh - f.top) / (vh + f.height), 0, 1); }
@@ -176,11 +201,7 @@
       img.style.opacity = op.toFixed(3);
       img.style.transform = "scale(" + (1.02 + lokal * 0.16).toFixed(4) + ")";
     });
-    if (akt !== prezAkt) {
-      prezAkt = akt;
-      if (prezPopis) prezPopis.textContent = prezSnimky[akt].getAttribute("data-popisek");
-      prezTecky.forEach(function (t, i) { t.classList.toggle("aktivni", i === akt); });
-    }
+    if (akt !== prezAkt) { prezAkt = akt; oznacPrezentaci(akt); }
   }
 
   /* ---------- Hlavní smyčka ---------- */
@@ -228,6 +249,17 @@
     reveal.forEach(function (el) { el.classList.add("is-in"); });
     $$(".krok").forEach(function (k) { k.classList.add("aktivni"); });
     var o1 = $(".ostrov__obrazy img"); if (o1) o1.classList.add("aktivni");
+  }
+
+  /* ---------- Plovoucí tlačítko schovat u formuláře ---------- */
+  var cileSchovat = $$("#poptavka, .paticka");
+  if (cileSchovat.length && "IntersectionObserver" in window) {
+    var viditelne = new Set();
+    var io3 = new IntersectionObserver(function (zaznamy) {
+      zaznamy.forEach(function (z) { if (z.isIntersecting) viditelne.add(z.target); else viditelne.delete(z.target); });
+      document.body.classList.toggle("u-formulare", viditelne.size > 0);
+    });
+    cileSchovat.forEach(function (c) { io3.observe(c); });
   }
 
   /* ---------- Týdny na kartách apartmánů ---------- */

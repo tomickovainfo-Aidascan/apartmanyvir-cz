@@ -395,10 +395,15 @@ p{margin:0 0 1em}
 .text-stranka h2{font-size:1.4rem;margin-top:2em}
 
 /* ---------- Stránka 404: autíčko u cedulky ---------- */
+.chyba-hlavni{padding-top:78px!important;padding-bottom:260px!important}
+@media (min-width:701px){.chyba-hlavni{padding-bottom:110px!important}}
 .chyba-scena{width:100%;max-width:380px;margin:18px auto 0;aspect-ratio:400/150}
+.chyba-tlacitka{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:480px;margin:8px auto 0}
+.chyba-tlacitka .btn{justify-content:center;width:100%;padding:10px 8px;font-size:.82rem}
+@media (max-width:420px){.chyba-scena{max-width:260px}}
 .chyba-svg{width:100%;height:100%;display:block}
 .chyba-auto{animation:chyba-prijezd 7s ease-in-out 1 both}
-.chyba-otaznik{transform-origin:center;animation:chyba-otaznik-kf 7s ease-in-out 1 both}
+.chyba-otaznik{opacity:0;transform-origin:center;animation:chyba-otaznik-kf 7s ease-in-out 1 both}
 @keyframes chyba-prijezd{
   0%,8%{transform:translateX(-310px)}
   35%,58%{transform:translateX(0)}

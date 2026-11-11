@@ -156,7 +156,9 @@
   function vykresliParalaxy() {
     var vh = window.innerHeight;
     paralaxy.forEach(function (el) {
-      var r = el.parentElement.getBoundingClientRect();
+      var kont = el.parentElement;
+      if (kont && kont.tagName === "PICTURE") kont = kont.parentElement;
+      var r = kont.getBoundingClientRect();
       if (r.bottom < -100 || r.top > vh + 100) return;
       var k = parseFloat(el.getAttribute("data-parallax")) || 0.12;
       var stred = r.top + r.height / 2 - vh / 2;

@@ -305,7 +305,7 @@ p{margin:0 0 1em}
 
 /* ---------- Mapa ---------- */
 .mapa{display:grid;grid-template-columns:1fr 1.6fr;gap:40px;align-items:center}
-.mapa__ramec{position:relative;aspect-ratio:16/10;border-radius:20px;overflow:hidden;background:var(--azur-svetla) url(../../img/okoli-pohled-na-plaz-m.jpg) center/cover;box-shadow:var(--stin)}
+.mapa__ramec{position:relative;aspect-ratio:16/10;border-radius:20px;overflow:hidden;background:var(--azur-svetla) url(../../img/okoli-pohled-na-plaz-m.jpg) center/cover;background-image:image-set(url(../../img/okoli-pohled-na-plaz-m.webp) type("image/webp"),url(../../img/okoli-pohled-na-plaz-m.jpg) type("image/jpeg"));box-shadow:var(--stin)}
 .mapa__ramec iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .mapa__nacist{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(15,42,61,.55);color:#fff;text-align:center;padding:20px}
 .mapa__nacist p{margin:0;font-size:.85rem;max-width:340px}
@@ -484,7 +484,8 @@ p{margin:0 0 1em}
   .prezentace{height:auto;aspect-ratio:4/5}
   .prezentace__pas{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .prezentace__pas::-webkit-scrollbar{display:none}
-  .prezentace img{position:relative;flex:0 0 100%;opacity:1!important;transform:none!important;scroll-snap-align:center}
+  .prezentace__pas picture{flex:0 0 100%;scroll-snap-align:center}
+  .prezentace img{position:relative;opacity:1!important;transform:none!important}
   .prezentace__tecky{bottom:22px}
   .prezentace__tecky button{width:11px;height:11px}
 }

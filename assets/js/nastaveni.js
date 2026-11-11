@@ -14,11 +14,11 @@ window.VIR = {
      Očekávaný formát odpovědi (JSON):
      { "1": [["2027-07-03","2027-07-17"]], "2": [...], "3": [...] }
      Datum "od" = den příjezdu, "do" = den odjezdu (obojí sobota). */
-  kalendarUrl: "",
+  kalendarUrl: "https://script.google.com/macros/s/AKfycbzV2wZeN2gw8gAXLJjWYGkP4KzOYxuB3aGHFnkGmVn4mHjlIn9dwhsBLk_az_1Un0yo/exec",
 
   /* Kam se odesílá poptávka (Apps Script web app).
      Dokud je prázdné, otevře se návštěvníkovi předvyplněný e-mail. */
-  poptavkaUrl: "",
+  poptavkaUrl: "https://script.google.com/macros/s/AKfycbzV2wZeN2gw8gAXLJjWYGkP4KzOYxuB3aGHFnkGmVn4mHjlIn9dwhsBLk_az_1Un0yo/exec",
 
   /* Google Analytics 4: ID měření (G-XXXXXXXXXX).
      Načte se jen po souhlasu návštěvníka na liště cookies. Prázdné = vypnuto. */
